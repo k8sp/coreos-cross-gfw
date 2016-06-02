@@ -32,7 +32,7 @@ Welcome to visit:https://teddysun.com/392.html
 Enjoy it!
 ```
 
-### 2.2. 安装支持 SS(支持 Shadowsocks 插件的路由)
+### 2.2. 安装支持 SS(Shadowsocks 插件)的路由
 这里我们使用的是 NetGearR700 型号的路由, 刷的是 merlin 改版固件, 具体过程如下, 不再阐述.
 [http://koolshare.cn/thread-4576-1-1.html](http://koolshare.cn/thread-4576-1-1.html)
 
