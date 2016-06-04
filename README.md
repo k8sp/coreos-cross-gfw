@@ -33,8 +33,9 @@ Enjoy it!
 ```
 
 ### 2.2. 安装支持 SS(Shadowsocks 插件)的路由
-这里我们使用的是 NetGearR700 型号的路由, 刷的是 merlin 改版固件, 具体过程如下, 不再阐述.
-[http://koolshare.cn/thread-4576-1-1.html](http://koolshare.cn/thread-4576-1-1.html)
+这里我们使用的是 NetGearR7000 型号的路由, 刷的是 merlin 改版固件, 具体过程如下, 按照步骤谨慎操作, 这里不再阐述.
+
+刷固件方法: [http://post.smzdm.com/p/51938/](http://post.smzdm.com/p/51938/)
 
 根据 VPS 上生成 server_ip 、port、password、加密方式填写, 模式选择大陆白名单模式(所有国外流量自动走代理, 不用维护代理列表). 
 
