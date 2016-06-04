@@ -33,7 +33,7 @@ Enjoy it!
 ```
 
 ### 2.2. 安装支持 SS(Shadowsocks 插件)的路由
-这里我们使用的是 NetGearR7000 型号的路由, 刷的是 merlin 改版固件, 具体过程如下, 按照步骤谨慎操作, 这里不再阐述.
+这里我们使用的是 NetGearR7000 型号的路由, 刷的是 merlin 改版固件, 具体过程如下, 按照步骤谨慎操作, 不再阐述.
 
 刷固件方法: [http://post.smzdm.com/p/51938/](http://post.smzdm.com/p/51938/)
 
