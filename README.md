@@ -14,7 +14,7 @@
 
 ## 搭建 Shadowsocks 服务器
 
-首先购买境外 VPS, 可以选择 [bandwagonhost](https://bandwagonhost.com), [linode](https://www.linode.co://www.linode.com), [dititalocean](https://www.digitalocean.com) 等。购买后得到一台虚拟主机和一个 IP，虚拟主机上可以安装主流的 Linux 操作系统。
+首先购买境外 VPS, 可以选择 [bandwagonhost](https://bandwagonhost.com), [linode](https://www.linode.co://www.linode.com), [dititalocean](https://www.digitalocean.com) 等。购买后得到一台虚拟主机和一个 IP，虚拟主机上可以安装主流的 Linux 操作系统.
 登录 VPS 后, 执行以下命令安装 Shadowsocks 服务器程序:
 
 ```bash
@@ -37,7 +37,9 @@ Enjoy it!
 
 ## 路由器刷集成 Shadowsocks 客户端的固件
 
-我们使用的是 NetGear R7000 型号的路由器, 刷的是 merlin 改版固件, 具体过程如下 (参考的是[本文](http://post.smzdm.com/p/51938/)), 步骤如下: (TODO: 将步骤写在这里, 以免引用的网络论坛的贴子失效)
+我们使用的是 NetGear R7000 型号的路由器, 刷的是 merlin 改版固件, 具体过程如下 (参考自[本文](http://post.smzdm.com/p/51938/)):
+
+(TODO: 将步骤写在这里, 以免引用的网络论坛的贴子失效)
 
 根据 VPS 上生成的 server_ip 、port、password、加密方式填写, 模式选择大陆白名单模式 (所有国外流量自动走代理, 不用维护代理列表).
 
