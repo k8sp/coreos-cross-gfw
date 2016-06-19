@@ -1,18 +1,21 @@
-# CoreOS 双网卡 cross the GFW
-## 1. 需求描述
-　　现有三台物理服务器, 通过 shadowsocks 配合路由器固件实现透明翻墙(服务器无需配置翻墙客户端, 自动判断国内、国外线路是否通过代理访问).
+# Linux 服务器透明翻墙
 
+## 目标和资源依赖
 
-　　由于三台物理服务器出口接入翻墙路由器使用的 NAT 网络模式经过一次地址转换, 同一网络无法访问, 所以使用双网卡策略. 通过添加静态路由策略, 使服务器访问外网走翻墙路由器, 内网服务器网关.
+### 目标
 
-__资源清单列出:__
-- 国外 VPS (访问Google、docker、quay.io 高速稳定)
-- 可刷 SS 翻墙固件的路由器一台
+在少量服务器上实现透明翻墙. 少量的含义是，本文介绍的方法需要一台家用路由器，每台服务器都要通过网线连接到路由器的一个 LAN 口, 而 LAN 口数量一般是 4 个，所以只适用于不多于 4 台的服务器. 透明翻墙是指, 服务器无需配置翻墙客户端, 或者通过环境变量来设置代理服务器, 而是自动的翻墙访问国外 IP.
+
+### 资源依赖
+
+- 境外 VPS 一个 (能高速稳定的访问 Google, quay.io, AWS 等被墙网站)
+- 可以刷集成 Shadowsocks 客户端的固件的路由器一台
 - 所有服务器拥有有双网卡
 
-## 2. 环境搭建
-### 2.1. 搭建 Shadowsocks 服务器
-登录购买的境外 VPS 后, 执行以下命令即可快速安装:
+## 搭建 Shadowsocks 服务器
+
+首先购买境外 VPS, 可以选择 [bandwagonhost](https://bandwagonhost.com), [linode](https://www.linode.co://www.linode.com), [dititalocean](https://www.digitalocean.com) 等。购买后得到一台虚拟主机和一个 IP，虚拟主机上可以安装主流的 Linux 操作系统.
+登录 VPS 后, 执行以下命令安装 Shadowsocks 服务器程序:
 
 ```bash
 # 这里我们选择 Go 版本的 shadowsocks , 对多客户端并发支持比较好
@@ -32,24 +35,31 @@ Welcome to visit:https://teddysun.com/392.html
 Enjoy it!
 ```
 
-### 2.2. 安装支持 SS(Shadowsocks 插件)的路由
-这里我们使用的是 NetGearR7000 型号的路由, 刷的是 merlin 改版固件, 具体过程如下, 按照步骤谨慎操作.
+## 路由器刷集成 Shadowsocks 客户端的固件
 
-刷固件方法: [http://post.smzdm.com/p/51938/](http://post.smzdm.com/p/51938/)
+我们使用的是 NetGear R7000 型号的路由器, 刷的是 merlin 改版固件, 具体过程如下 (参考自[本文](http://post.smzdm.com/p/51938/)):
 
-根据 VPS 上生成 server_ip 、port、password、加密方式填写, 模式选择大陆白名单模式(所有国外流量自动走代理, 不用维护代理列表). 
+(TODO: 将步骤写在这里, 以免引用的网络论坛的贴子失效)
+
+根据 VPS 上生成的 server_ip 、port、password、加密方式填写, 模式选择大陆白名单模式 (所有国外流量自动走代理, 不用维护代理列表).
 
 ![router](./images/2016-06-02_11-48-14.png)
 
+## 配置服务器
 
-### 2.3. 配置网络结构
+### 网络结构
+
+我们在 3 台安装了 CoreOS 系统的服务器上实现了透明翻墙，网络结构如下图所示：
+
 ![network_config](./images/2016-05-31_20-49-31.png)
 
-## 3. 配置系统静态路由
-### 3.1. 安装配置 CoreOS 系统
-通过 PXE 方式安装, 具体步骤查看[https://github.com/k8sp/bare-metal-coreos/blob/master/README.md](https://github.com/k8sp/bare-metal-coreos/blob/master/README.md)
-### 3.2. 配置系统自动加载静态路由
-在`/etc/systemd/network`目录下分别创建`10-static.network`和`20-dhcp.network` 两个文件
+### 配置系统静态路由
+
+由于三台服务器出口接入翻墙路由器使用的 NAT 网络模式经过一次地址转换, 同一网络无法访问, 所以使用双网卡策略. 通过添加静态路由策略, 使服务器访问外网走翻墙路由器, 内网服务器网关.
+
+### 配置系统自动加载静态路由
+
+在每台服务器的 `/etc/systemd/network` 目录下分别创建 `10-static.network` 和 `20-dhcp.network` 两个文件
 
 ```bash
 # 创建 10-static.network
@@ -78,8 +88,4 @@ Name=en*
 [Network]
 DHCP=yes
 ```
-
-
-
-　
-
+至此, 翻墙完成. Happy Hacking!
