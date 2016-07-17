@@ -8,7 +8,7 @@
 
 __FQRoute NetGrear R7000__
 
-在 __[透明翻墙路由器配置](./chapter-1/transparent-router-cross-over-the-wall.md)__ 中成功配置翻墙路由, 提供接入在 LAN 口下服务器的透明翻墙的功能
+在 __[透明翻墙路由器配置](../chapter-1/transparent-router-cross-over-the-wall.md)__ 中成功配置翻墙路由, 提供接入在 LAN 口下服务器的透明翻墙的功能
 
 __coreos191配置__
 
