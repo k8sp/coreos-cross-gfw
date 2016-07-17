@@ -2,7 +2,7 @@
 
 在上一章__[内网集群网络构建](../chapter-2/construction-cluster-network.md)__中介绍了各个角色在翻墙网络中的功能, 下面我们来配置这些角色以正常工作
 
-### 配置 coreos191(路由, NAT协议)
+### 配置 coreos192(路由, NAT协议)
 
 #### 静态路由配置
 
